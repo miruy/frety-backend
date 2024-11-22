@@ -20,4 +20,7 @@ public class CreateCommentRequest {
     private String content;
 
     private Long parentCommentId;
+
+    @NotNull(message = "userName is required")
+    private String userName;
 }

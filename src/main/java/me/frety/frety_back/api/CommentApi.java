@@ -28,21 +28,21 @@ public class CommentApi implements CommentSpec {
     }
 
     @PatchMapping("/{commentId}")
-    public ResponseEntity<Void> updateComment(@PathVariable Long commentId, @RequestBody UpdateCommentRequest request) {
+    public ResponseEntity<Void> updateComment(@PathVariable("commentId") Long commentId, @RequestBody UpdateCommentRequest request) {
         commentUseCase.updateComment(commentId, request);
 
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{commentId}")
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
+    public ResponseEntity<Void> deleteComment(@PathVariable("commentId") Long commentId) {
         commentUseCase.deleteComment(commentId);
 
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{commentId}")
-    public ResponseEntity<GetCommentByIdResponse> getCommentById(@PathVariable Long commentId) {
+    public ResponseEntity<GetCommentByIdResponse> getCommentById(@PathVariable("commentId") Long commentId) {
         GetCommentByIdResponse body = commentUseCase.getCommentById(commentId);
 
         return ResponseEntity.ok(body);

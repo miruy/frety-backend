@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +25,7 @@ public class CreateTabRequest {
 
     @NotNull(message = "content is required")
     private String content;
+
+    @NotNull(message = "authorName is required")
+    private String authorName;
 }

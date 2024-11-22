@@ -5,8 +5,7 @@ import me.frety.frety_back.domain.comment.entity.CommentType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    List<Comment> findByTabIdAndType(Long tabId, CommentType type);
+    List<Comment> findByTabIdAndTypeAndDeletedAtIsNull(Long tabId, CommentType type);
 }

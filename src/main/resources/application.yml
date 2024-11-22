@@ -8,3 +8,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+auth:
+  jwt:
+    secret-key: 12341234123412341234123412341234123412341234123412341234123412341234123412341234

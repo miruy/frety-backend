@@ -1,13 +1,16 @@
 package me.frety.frety_back.domain.tab.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import me.frety.frety_back.domain.Favorite.entity.Favorite;
+import me.frety.frety_back.domain.account.entity.Account;
 import me.frety.frety_back.domain.common.entity.BaseEntity;
+import me.frety.frety_back.domain.vote.entity.Vote;
+
+import java.util.List;
 
 @Getter
 @Entity
@@ -30,6 +33,18 @@ public class Tab extends BaseEntity {
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
+    @Column(name = "authorName", nullable = false)
+    private String authorName;
+
+    @OneToMany(mappedBy = "tab")
+    private List<Favorite> favorites;
+
+    @OneToMany(mappedBy = "tab")
+    private List<Vote> votes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Account author;
+
     public void changeArtist(String artist) {
         this.artist = artist;
     }
@@ -48,6 +63,10 @@ public class Tab extends BaseEntity {
 
     public void changeContent(String content) {
         this.content = content;
+    }
+
+    public void changeAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public void softDelete() {

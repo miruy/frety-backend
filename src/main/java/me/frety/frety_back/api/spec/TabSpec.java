@@ -1,29 +1,43 @@
 package me.frety.frety_back.api.spec;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import me.frety.frety_back.domain.common.request.PageRq;
+import me.frety.frety_back.domain.common.response.PageRs;
 import me.frety.frety_back.domain.tab.request.CreateTabRequest;
+import me.frety.frety_back.domain.tab.request.SearchMyCreatedTabsCondition;
+import me.frety.frety_back.domain.tab.request.SearchTabsCondition;
 import me.frety.frety_back.domain.tab.request.UpdateTabRequest;
 import me.frety.frety_back.domain.tab.response.GetTabByIdResponse;
 import me.frety.frety_back.domain.tab.response.SearchTabsResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Tag(name = "Tab", description = "악보")
 public interface TabSpec {
     @Operation(summary = "악보 생성")
-    ResponseEntity<Long> createTab(CreateTabRequest request);
+    @SecurityRequirement(name = "bearer-key")
+    ResponseEntity<Long> createTab(CreateTabRequest request, Jwt jwt);
 
     @Operation(summary = "악보 수정")
-    ResponseEntity<Void> updateTab(Long tabId, UpdateTabRequest request);
+    @SecurityRequirement(name = "bearer-key")
+    ResponseEntity<Void> updateTab(@Parameter(name = "tabId") @PathVariable("tabId") Long tabId, UpdateTabRequest request, Jwt jwt);
 
     @Operation(summary = "악보 삭제")
-    ResponseEntity<Void> deleteTab(Long tabId);
+    @SecurityRequirement(name = "bearer-key")
+    ResponseEntity<Void> deleteTab(@Parameter(name = "tabId") @PathVariable("tabId") Long tabId, Jwt jwt);
 
     @Operation(summary = "악보 검색")
-    ResponseEntity<List<SearchTabsResponse>> searchTabs();
+    ResponseEntity<PageRs<SearchTabsResponse>> searchTabs(PageRq pageRq, SearchTabsCondition condition);
+
+    @Operation(summary = "내가 제작한 악보 검색")
+    ResponseEntity<PageRs<SearchTabsResponse>> searchMyCreatedTabs(PageRq pageRq, Long authorId);
 
     @Operation(summary = "악보 단건 조회")
-    ResponseEntity<GetTabByIdResponse> getTabById(Long tabId);
+    ResponseEntity<GetTabByIdResponse> getTabById(@Parameter(name = "tabId") @PathVariable("tabId") Long tabId);
 }

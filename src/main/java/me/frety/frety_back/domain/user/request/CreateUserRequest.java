@@ -1,7 +1,10 @@
 package me.frety.frety_back.domain.user.request;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -16,4 +19,7 @@ public class CreateUserRequest {
 
     @NotNull(message = "password is required")
     private String password;
+
+    @NotNull(message = "name is required")
+    private String name;
 }

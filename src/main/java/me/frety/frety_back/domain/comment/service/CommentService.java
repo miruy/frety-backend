@@ -35,6 +35,7 @@ public class CommentService implements CommentUseCase {
          */
         Comment comment = Comment.builder()
                 .content(request.getContent())
+                .userName(request.getUserName())
                 .build();
 
         /**
@@ -111,22 +112,18 @@ public class CommentService implements CommentUseCase {
                 .filter(t -> !t.isDeleted())
                 .orElseThrow(() -> new RuntimeException("댓글이 존재하지 않습니다."));
 
-        return GetCommentByIdResponse.builder()
-                .id(comment.getId())
-                .content(comment.getContent())
-                .build();
+        return commentConverter.toGetCommentByIdResponse(comment);
     }
 
     @Override
     public List<SearchCommentsResponse> searchComments(SearchCommentsCondition condition) {
         List<Comment> comments = switch (condition.getType()) {
-            case TAB -> commentRepository.findByTabIdAndType(condition.getTargetId(), condition.getType());
-            default -> throw new RuntimeException("not allowed");
+            case TAB ->
+                    commentRepository.findByTabIdAndTypeAndDeletedAtIsNull(condition.getTargetId(), condition.getType());
+            default -> throw new RuntimeException("댓글이 존재하지 않습니다.");
         };
 
-        return comments.stream().map(comment -> SearchCommentsResponse.builder()
-                .id(comment.getId())
-                .build())
-                .toList();
+        return commentConverter.toSearchTabsResponseList(comments);
     }
+
 }

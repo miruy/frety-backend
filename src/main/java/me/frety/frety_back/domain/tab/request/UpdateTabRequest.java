@@ -1,10 +1,10 @@
 package me.frety.frety_back.domain.tab.request;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnNotWebApplication;
+
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -15,4 +15,5 @@ public class UpdateTabRequest {
     private String capo;
     private String style;
     private String content;
+    private String authorName;
 }
