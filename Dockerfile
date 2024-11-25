@@ -1,5 +1,5 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM gradle:jdk23-corretto AS builder
+FROM gradle:jdk23-corretto as builder
 
 # 작업 디렉토리 설정
 WORKDIR /app
@@ -11,14 +11,10 @@ COPY . .
 RUN chmod +x ./gradlew
 
 # 종속성 설치
-RUN ./gradlew dependencies --no-daemon --stacktrace --info
-
-# # 종속성 설치
-# RUN ./gradlew dependencies --no-daemon
+RUN ./gradlew dependencies --no-daemon
 
 # 애플리케이션 빌드
-FROM ghcr.io/graalvm/jdk-community:23
-# RUN ./gradlew build --no-daemon -x test
+RUN ./gradlew build --no-daemon -x test
 
 # 두 번째 스테이지: 실행 스테이지
 FROM amazoncorretto:23
