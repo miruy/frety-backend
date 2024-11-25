@@ -43,8 +43,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/miruy/frety-server:${{ needs.tag.outputs.tag_name }}
-            ghcr.io/miruy/frety-server:latest
+            ghcr.io/miruy/frety-server-v2:${{ needs.tag.outputs.tag_name }}
+            ghcr.io/miruy/frety-server-v2:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
   release:
