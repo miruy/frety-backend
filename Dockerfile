@@ -1,5 +1,5 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM gradle:jdk23-corretto as builder
+FROM gradle:jdk23-corretto AS builder
 
 # 작업 디렉토리 설정
 WORKDIR /app
