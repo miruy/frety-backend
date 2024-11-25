@@ -1,5 +1,5 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM gradle:jdk21-jammy as builder
+FROM gradle:jdk23-corretto as builder
 
 # 작업 디렉토리 설정
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN ./gradlew dependencies --no-daemon
 RUN ./gradlew build --no-daemon -x test
 
 # 두 번째 스테이지: 실행 스테이지
-FROM ghcr.io/graalvm/jdk-community:21
+FROM amazoncorretto:23
 
 # 작업 디렉토리 설정
 WORKDIR /app
@@ -25,9 +25,7 @@ WORKDIR /app
 # 첫 번째 스테이지에서 빌드된 JAR 파일 복사
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-# 사용자 생성 및 권한 설정 (선택 사항)
-RUN groupadd -r spring && useradd -r -g spring spring
-USER spring:spring
+USER 1000
 
 # 실행할 JAR 파일 지정
 ENTRYPOINT ["java", "-jar", "app.jar"]
