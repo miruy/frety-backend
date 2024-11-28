@@ -77,5 +77,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           instance-ids: ${{ secrets.INSTANCE_ID }}
 
-          working-directory: /workspace/frety_back
+          working-directory: /workspace/frety-v2
           command: sudo TAG=${{ needs.tag.outputs.tag_name }} docker compose up -d
