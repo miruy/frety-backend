@@ -2,12 +2,8 @@ package me.frety.frety_back.api;
 
 import lombok.RequiredArgsConstructor;
 import me.frety.frety_back.api.spec.FavoriteSpec;
-import me.frety.frety_back.api.spec.VoteSpec;
-import me.frety.frety_back.domain.Favorite.entity.Favorite;
 import me.frety.frety_back.domain.Favorite.request.CreateFavoriteRequest;
 import me.frety.frety_back.domain.Favorite.usecase.FavoriteUseCase;
-import me.frety.frety_back.domain.vote.request.CreateVoteRequest;
-import me.frety.frety_back.domain.vote.usecase.VoteUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
