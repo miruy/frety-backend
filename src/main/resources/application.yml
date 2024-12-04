@@ -18,6 +18,18 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dbflarla496695@gmail.com
+    password: taqtdprezcpptusl
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 auth:
   jwt:
     secret-key: 12341234123412341234123412341234123412341234123412341234123412341234123412341234
