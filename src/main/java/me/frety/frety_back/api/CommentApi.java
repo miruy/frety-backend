@@ -1,6 +1,5 @@
 package me.frety.frety_back.api;
 
-import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import me.frety.frety_back.api.spec.CommentSpec;
 import me.frety.frety_back.domain.comment.request.CreateCommentRequest;
@@ -49,7 +48,6 @@ public class CommentApi implements CommentSpec {
         return ResponseEntity.ok(body);
     }
 
-    @Operation // 페이지네이션 사용 안함
     @GetMapping
     public ResponseEntity<List<SearchCommentsResponse>> searchComments(SearchCommentsCondition condition) {
         List<SearchCommentsResponse> body = commentUseCase.searchComments(condition);
