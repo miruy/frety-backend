@@ -33,7 +33,7 @@ public class Tab extends BaseEntity {
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "authorName", nullable = false)
+    @Column(name = "author_name", nullable = false)
     private String authorName;
 
     @OneToMany(mappedBy = "tab")

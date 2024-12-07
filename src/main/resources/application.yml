@@ -15,8 +15,6 @@ spring:
         default_batch_fetch_size: 1000
     hibernate:
       ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
   mail:
     host: smtp.gmail.com
