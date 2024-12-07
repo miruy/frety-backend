@@ -39,6 +39,7 @@ public class TabService implements TabUseCase {
                 .filter(Account::isUser)
                 .orElseThrow(() -> new RuntimeException("인증되지 않은 유저입니다."));
 
+        System.out.println("request.getAuthorName()" + request.getAuthorName());
         /**
          * 악보 생성
          */
