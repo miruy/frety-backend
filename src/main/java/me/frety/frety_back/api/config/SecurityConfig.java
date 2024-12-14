@@ -49,6 +49,8 @@ public class SecurityConfig {
         ArrayList<String> allowedOriginPatterns = new ArrayList<>();
         allowedOriginPatterns.add("http://localhost:3000");
         allowedOriginPatterns.add("http://127.0.0.1:3000");
+        allowedOriginPatterns.add("https://www.frety.me");
+        allowedOriginPatterns.add("https://frety.me");
 
         ArrayList<String> allowedHttpMethods = new ArrayList<>();
         allowedHttpMethods.add("GET");
