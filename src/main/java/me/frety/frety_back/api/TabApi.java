@@ -54,9 +54,9 @@ public class TabApi implements TabSpec {
         return ResponseEntity.ok(body);
     }
 
-    @GetMapping("/{authorId}/created")
-    public ResponseEntity<PageRs<SearchTabsResponse>> searchMyCreatedTabs(PageRq pageRq, @PathVariable("authorId") Long authorId) {
-        PageRs<SearchTabsResponse> body = tabUseCase.searchMyCreatedTabs(pageRq, authorId);
+    @GetMapping("/{authorName}/created")
+    public ResponseEntity<PageRs<SearchTabsResponse>> searchMyCreatedTabs(PageRq pageRq, @PathVariable("authorName") String authorName) {
+        PageRs<SearchTabsResponse> body = tabUseCase.searchMyCreatedTabs(pageRq, authorName);
 
         return ResponseEntity.ok(body);
     }

@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import me.frety.frety_back.domain.common.request.PageRq;
 import me.frety.frety_back.domain.common.response.PageRs;
 import me.frety.frety_back.domain.tab.request.CreateTabRequest;
-import me.frety.frety_back.domain.tab.request.SearchMyCreatedTabsCondition;
 import me.frety.frety_back.domain.tab.request.SearchTabsCondition;
 import me.frety.frety_back.domain.tab.request.UpdateTabRequest;
 import me.frety.frety_back.domain.tab.response.GetTabByIdResponse;
@@ -15,8 +14,6 @@ import me.frety.frety_back.domain.tab.response.SearchTabsResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @Tag(name = "Tab", description = "악보")
 public interface TabSpec {
@@ -36,7 +33,7 @@ public interface TabSpec {
     ResponseEntity<PageRs<SearchTabsResponse>> searchTabs(PageRq pageRq, SearchTabsCondition condition);
 
     @Operation(summary = "내가 제작한 악보 검색")
-    ResponseEntity<PageRs<SearchTabsResponse>> searchMyCreatedTabs(PageRq pageRq, Long authorId);
+    ResponseEntity<PageRs<SearchTabsResponse>> searchMyCreatedTabs(PageRq pageRq, String authorName);
 
     @Operation(summary = "악보 단건 조회")
     ResponseEntity<GetTabByIdResponse> getTabById(@Parameter(name = "tabId") @PathVariable("tabId") Long tabId);

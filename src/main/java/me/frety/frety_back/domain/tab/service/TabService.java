@@ -132,8 +132,8 @@ public class TabService implements TabUseCase {
     }
 
     @Override
-    public PageRs<SearchTabsResponse> searchMyCreatedTabs(PageRq pageRq, Long authorId) {
-        Page<Tab> page = tabRepository.searchByAuthor(pageRq.toPageable(), authorId);
+    public PageRs<SearchTabsResponse> searchMyCreatedTabs(PageRq pageRq, String authorName) {
+        Page<Tab> page = tabRepository.searchByAuthor(pageRq.toPageable(), authorName);
 
         return tabConverter.toSearchTabsResponsePage(page);
     }

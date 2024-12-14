@@ -4,14 +4,12 @@ import jakarta.validation.Valid;
 import me.frety.frety_back.domain.common.request.PageRq;
 import me.frety.frety_back.domain.common.response.PageRs;
 import me.frety.frety_back.domain.tab.request.CreateTabRequest;
-import me.frety.frety_back.domain.tab.request.SearchMyCreatedTabsCondition;
 import me.frety.frety_back.domain.tab.request.SearchTabsCondition;
 import me.frety.frety_back.domain.tab.request.UpdateTabRequest;
 import me.frety.frety_back.domain.tab.response.GetTabByIdResponse;
 import me.frety.frety_back.domain.tab.response.SearchTabsResponse;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.List;
 
 @Validated
 public interface TabUseCase {
@@ -23,7 +21,7 @@ public interface TabUseCase {
 
     PageRs<SearchTabsResponse> searchTabs(PageRq pageRq, SearchTabsCondition condition);
 
-    PageRs<SearchTabsResponse> searchMyCreatedTabs(PageRq pageRq, Long authorId);
+    PageRs<SearchTabsResponse> searchMyCreatedTabs(PageRq pageRq, String authorName);
 
     GetTabByIdResponse getTabById(Long tabId);
 }

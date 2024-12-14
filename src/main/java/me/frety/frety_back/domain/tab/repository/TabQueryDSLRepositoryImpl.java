@@ -95,10 +95,10 @@ public class TabQueryDSLRepositoryImpl implements TabQueryDSLRepository {
 
 
     @Override
-    public Page<Tab> searchByAuthor(Pageable pageable, Long authorId) {
+    public Page<Tab> searchByAuthor(Pageable pageable, String authorName) {
 
         Predicate[] where = {
-                eqAuthorId(authorId),
+                eqAuthorName(authorName), // authorName 조건 추가
                 tab.deletedAt.isNull()
         };
 
@@ -118,8 +118,7 @@ public class TabQueryDSLRepositoryImpl implements TabQueryDSLRepository {
                 contentQuery.fetch(), pageable, countQuery.fetchOne());
     }
 
-    public BooleanExpression eqAuthorId(Long authorId) {
-        return authorId == null ? null : tab.author.id.eq(authorId)
-                .and(tab.author.deletedAt.isNull());
+    private BooleanExpression eqAuthorName(String authorName) {
+        return authorName == null ? null : tab.authorName.eq(authorName);
     }
 }

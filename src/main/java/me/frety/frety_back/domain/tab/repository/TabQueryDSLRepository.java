@@ -8,5 +8,5 @@ import org.springframework.data.domain.Pageable;
 public interface TabQueryDSLRepository {
     Page<Tab> search(Pageable pageable, SearchTabsCondition condition);
 
-    Page<Tab> searchByAuthor(Pageable pageable, Long authorId);
+    Page<Tab> searchByAuthor(Pageable pageable, String authorName);
 }
