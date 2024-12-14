@@ -154,7 +154,7 @@ public class AuthService implements AuthUseCase {
         return CreateTokenResponse.builder()
                 .accessToken(accessToken.getValue())
                 .refreshToken(refreshToken.getValue())
-                .authId(authentication.getId())
+                .authId(authentication.getAccount().getId())
                 .build();
     }
 }
