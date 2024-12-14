@@ -3,23 +3,16 @@ package me.frety.frety_back.domain.tab.repository;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import me.frety.frety_back.domain.common.config.QueryDSLConfig;
-import me.frety.frety_back.domain.tab.entity.QTab;
 import me.frety.frety_back.domain.tab.entity.Tab;
-import me.frety.frety_back.domain.tab.request.SearchMyCreatedTabsCondition;
 import me.frety.frety_back.domain.tab.request.SearchTabsCondition;
 import me.frety.frety_back.domain.tab.request.SearchTabsCondition__Sort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static me.frety.frety_back.domain.tab.entity.QTab.tab;
 import static me.frety.frety_back.domain.tab.request.SearchTabsCondition__Sort.RECENT;

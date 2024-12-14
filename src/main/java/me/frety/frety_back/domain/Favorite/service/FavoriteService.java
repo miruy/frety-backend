@@ -7,14 +7,9 @@ import me.frety.frety_back.domain.Favorite.request.CreateFavoriteRequest;
 import me.frety.frety_back.domain.Favorite.usecase.FavoriteUseCase;
 import me.frety.frety_back.domain.account.entity.Account;
 import me.frety.frety_back.domain.account.repository.AccountRepository;
-import me.frety.frety_back.domain.comment.entity.Comment;
 import me.frety.frety_back.domain.common.entity.BaseEntity;
 import me.frety.frety_back.domain.tab.entity.Tab;
 import me.frety.frety_back.domain.tab.repository.TabRepository;
-import me.frety.frety_back.domain.vote.entity.Vote;
-import me.frety.frety_back.domain.vote.repository.VoteRepository;
-import me.frety.frety_back.domain.vote.request.CreateVoteRequest;
-import me.frety.frety_back.domain.vote.usecase.VoteUseCase;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
