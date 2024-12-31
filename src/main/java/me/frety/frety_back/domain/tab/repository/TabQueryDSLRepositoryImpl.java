@@ -42,7 +42,7 @@ public class TabQueryDSLRepositoryImpl implements TabQueryDSLRepository {
                 .where(where)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .orderBy(sortRecent(condition.getSort()));
+                .orderBy(tab.createdAt.desc());
 
         return new PageImpl<>(
                 contentQuery.fetch(), pageable, countQuery.fetchOne());
